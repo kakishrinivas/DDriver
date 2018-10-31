@@ -1,0 +1,208 @@
+familiar with reading excel then it is just a cup of tea now
+
+In below example, I am  writing .xlsx file
+ 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
+
+public class ReadandWriteExcel {
+ public static void main(String []args){
+  try {
+  // Specify the file path which you want to create or write
+  File src=new File("./testdata/test.xlsx");
+  // Load the file
+  FileInputStream fis=new FileInputStream(src);
+   // load the workbook
+   XSSFWorkbook wb=new XSSFWorkbook(fis);
+ // get the sheet which you want to modify or create
+   XSSFSheet sh1= wb.getSheetAt(0);
+ // getRow specify which row we want to read and getCell which column
+ System.out.println(sh1.getRow(0).getCell(0).getStringCellValue());
+ System.out.println(sh1.getRow(0).getCell(1).getStringCellValue());
+ System.out.println(sh1.getRow(1).getCell(0).getStringCellValue());
+ System.out.println(sh1.getRow(1).getCell(1).getStringCellValue());
+ System.out.println(sh1.getRow(2).getCell(0).getStringCellValue());
+ System.out.println(sh1.getRow(2).getCell(1).getStringCellValue());
+// here createCell will create column
+// and setCellvalue will set the value
+ sh1.getRow(0).createCell(2).setCellValue("2.41.0");
+ sh1.getRow(1).createCell(2).setCellValue("2.5");
+ sh1.getRow(2).createCell(2).setCellValue("2.39");
+
+// here we need to specify where you want to save file
+ FileOutputStream fout=new FileOutputStream(new File("location of file/filename.xlsx"));
+// finally write content 
+ wb.write(fout);
+// close the file
+ fout.close();
+  } catch (Exception e) {
+   System.out.println(e.getMessage());
+  }
+ }
+}
+
+============================================================
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
+public class ReadandWriteExcel {
+ public static void main(String []args){
+  try {
+  // Specify the file path which you want to create or write
+  File src=new File("./testdata/test.xlsx");
+  // Load the file
+  FileInputStream fis=new FileInputStream(src);
+   // load the workbook
+   XSSFWorkbook wb=new XSSFWorkbook(fis);
+  // get the sheet which you want to modify or create
+   XSSFSheet sh1= wb.getSheetAt(0);
+ // getRow specify which row we want to read and getCell which column
+ System.out.println(sh1.getRow(0).getCell(0).getStringCellValue());
+ System.out.println(sh1.getRow(0).getCell(1).getStringCellValue());
+ System.out.println(sh1.getRow(1).getCell(0).getStringCellValue());
+ System.out.println(sh1.getRow(1).getCell(1).getStringCellValue());
+ System.out.println(sh1.getRow(2).getCell(0).getStringCellValue());
+ System.out.println(sh1.getRow(2).getCell(1).getStringCellValue());
+// here createCell will create column
+// and setCellvalue will set the value
+ sh1.getRow(0).createCell(2).setCellValue("2.41.0");
+ sh1.getRow(1).createCell(2).setCellValue("2.5");
+ sh1.getRow(2).createCell(2).setCellValue("2.39");
+ 
+// here we need to specify where you want to save file
+ FileOutputStream fout=new FileOutputStream(new File("location of file/filename.xlsx"));
+ 
+// finally write content 
+ wb.write(fout);
+// close the file
+ fout.close();
+  } catch (Exception e) {
+   System.out.println(e.getMessage());
+  }
+ }
+}
+
+========================================
+public class ReadandWriteExcel {
+ 
+ public static void main(String []args){
+  try {
+  // Specify the path of file
+  File src=new File("filepath/excelsheetname.xlsx");
+   // load file
+   FileInputStream fis=new FileInputStream(src);
+   // Load workbook
+   XSSFWorkbook wb=new XSSFWorkbook(fis);
+   // Load sheet- Here we are loading first sheetonly
+      XSSFSheet sh1= wb.getSheetAt(0);
+  // getRow() specify which row we want to read.
+  // and getCell() specify which column to read.
+  // getStringCellValue() specify that we are reading String data.
+
+ System.out.println(sh1.getRow(0).getCell(0).getStringCellValue());
+ System.out.println(sh1.getRow(0).getCell(1).getStringCellValue());
+ System.out.println(sh1.getRow(1).getCell(0).getStringCellValue());
+ System.out.println(sh1.getRow(1).getCell(1).getStringCellValue());
+ System.out.println(sh1.getRow(2).getCell(0).getStringCellValue());
+ System.out.println(sh1.getRow(2).getCell(1).getStringCellValue());
+  } catch (Exception e) {
+   System.out.println(e.getMessage());
+  }
+ }
+}
+================================
+public class firsttestngfile {
+    public String baseUrl = "http://demo.guru99.com/test/newtours/";
+    String driverPath = "C:\\geckodriver.exe";
+    public WebDriver driver ; 
+     
+  @Test
+  public void verifyHomepageTitle() {
+       
+      System.out.println("launching firefox browser"); 
+      System.setProperty("webdriver.firefox.marionette", driverPath);
+      driver = new FirefoxDriver();
+      driver.get(baseUrl);
+      String expectedTitle = "Welcome: Mercury Tours";
+      String actualTitle = driver.getTitle();
+      Assert.assertEquals(actualTitle, expectedTitle);
+      driver.close();
+  }
+}
+============================
+public class firsttestngfile {
+    public String baseUrl = "http://demo.guru99.com/test/newtours/";
+    String driverPath = "C:\\geckodriver.exe";
+    public WebDriver driver ; 
+     @AfterTest                            //Jumbled
+      public void terminateBrowser(){
+          driver.close();
+      }
+     @BeforeTest                            //Jumbled
+      public void launchBrowser() {
+          System.out.println("launching firefox browser"); 
+          System.setProperty("webdriver.firefox.marionette", driverPath);
+          driver = new FirefoxDriver();
+          driver.get(baseUrl);
+      }
+      @Test                                //Jumbled
+      public void verifyHomepageTitle() {
+          String expectedTitle = "Welcome: Mercury Tours";
+          String actualTitle = driver.getTitle();
+          Assert.assertEquals(actualTitle, expectedTitle);
+     }
+      
+}
+=================================
+public class firsttestngfile {
+    public String baseUrl = "http://demo.guru99.com/test/newtours/";
+    String driverPath = "C:\\geckodriver.exe";
+    public WebDriver driver; 
+    public String expected = null;
+    public String actual = null;
+        @BeforeTest
+      public void launchBrowser() {
+          System.out.println("launching firefox browser"); 
+          System.setProperty("webdriver.firefox.marionette", driverPath);
+          driver= new FirefoxDriver();
+          driver.get(baseUrl);
+      }
+      
+      @BeforeMethod
+      public void verifyHomepageTitle() {
+          String expectedTitle = "Welcome: Mercury Tours";
+          String actualTitle = driver.getTitle();
+          Assert.assertEquals(actualTitle, expectedTitle);
+      }
+          @Test(priority = 0)
+      public void register(){
+          driver.findElement(By.linkText("REGISTER")).click() ;
+          expected = "Register: Mercury Tours";
+          actual = driver.getTitle();
+          Assert.assertEquals(actual, expected);
+      }
+          @Test(priority = 1)
+      public void support() {
+            driver.findElement(By.linkText("SUPPORT")).click() ;
+            expected = "Under Construction: Mercury Tours";
+            actual = driver.getTitle();
+            Assert.assertEquals(actual, expected);
+      }
+      @AfterMethod
+      public void goBackToHomepage ( ) {
+            driver.findElement(By.linkText("Home")).click() ;
+      }
+       
+      @AfterTest
+      public void terminateBrowser(){
+          driver.close();
+      }
+}
+=============================================================

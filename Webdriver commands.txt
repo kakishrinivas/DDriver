@@ -1,0 +1,304 @@
+Basic webdriver commands to perform actions on web element of your software web application's web page. We can perform too many command operations in webdriver to automate software application test process and will look about them one by one in near future. Right now I am describing you few of them for your kind informati on. Bellow given commands are commonly used commands of selenium webdriver to use in automation process of any software web application.  
+
+1. Creating New Instance Of Firefox Driver 
+
+WebDriver driver = new FirefoxDriver();  
+Above given syntax will create new instance of Firefox driver. VIEW PRACTICAL EXAMPLE
+ 
+2. Command To Open URL In Browser
+ 
+driver.get("http://only-testing-blog. blogspot.com/2013/11/new-test.html"); 
+This syntax will open specified URL of software web application in web browser.  VIEW PRACTICAL EXAMPLE 
+OF OPEN URL
+ 
+3. Clicking on any element or button of webpage 
+ 
+driver.findElement(By.id("submitButton")).click(); 
+Above given syntax will click on targeted element in webdriver.  VIEW PRACTICAL EXAMPLE OF CLICK ON 
+ELEMENT
+ 
+4. Store text of targeted element in variable
+ 
+String dropdown = driver.findElement(By.tagName("select")).getText(); 
+This syntax will retrieve text from targeted element of software web application page and will store it in
+variable = dropdown. VIEW PRACTICAL EXAMPLE OF Get Text 
+
+5. Typing text in text box or text area. 
+driver.findElement(By.name("fname")).sendKeys("My First Name"); 
+Above syntax will type specified text in targeted element.  VIEW PRACTICAL EXAMPLE OF SendKeys
+ 
+6. Applying Implicit wait in webdriver
+ 
+driver. manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+This syntax will force webdriver to wait for 15 second if element not found on page of software web
+application. VIEW PRACTICAL EXAMPLE OF IMPLICIT WAIT
+
+7. Applying Explicit wait in webdriver with WebDriver canned conditions.  
+
+WebDriverWait wait = new WebDriverWait(driver, 15);  
+wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//div[@id='timeLeft']"), "Time
+left: 7 seconds")); 
+Above 2 syntax will wait for till 15 seconds for expected text "Ti me left: 7 seconds" to be appear on targeted
+element. VIWE DIFFERENT PRACTICAL EXAMPLES OF EXPLICIT WAIT 
+
+8. Get page title in selenium webdriver 
+
+driver.getTitle(); 
+It will retrieve page title and you can store it in variable to use in next steps. VIEW PRACTICAL EXAMPLE
+OF GET TITLE 
+
+9. Get Current Page URL In Selenium WebDriver 
+
+driver.getCurrentUrl(); 
+It will retrieve current page URL and you can use it to compare with your expected URL. VIEW PRACTICAL
+EXAMPLE OF GET CURRENT URL 
+
+10. Get domain name using java script executor 
+
+JavascriptExecutor javascript = (JavascriptExecutor) driver; 
+String CurrentURLUsingJS=(String)javascript.executeScript("return document.domain"); 
+Above syntax will retrieve your software application's domain name using webdriver's java script executor
+interface and store it in to variable. VIEW GET DOMAIN NAME PRACTICAL EXAMPLE. 
+
+11. Generate alert using webdriver's java script executor interface 
+
+JavascriptExecutor javascript = (JavascriptExecutor) driver; 
+javascript.executeScript("alert('Test Case Execution Is started Now..');"); 
+It will generate alert during your selenium webdriver test case execution. VIEW PRACTICAL EXAMPLE 
+OF GENERATE ALERT USING SELENIUM WEBDRIVER.
+ 
+12. Selecting or Deselecting value from drop down in selenium webdriver.  
+? Select By Visible Text 
+Select mydrpdwn = new Select(driver.findElement(By.id("Carlist")));
+mydrpdwn.s electByVisibleText("Audi"); 
+It will select value from drop down list using visible text value = "Audi".  
+? Select By Value 
+Select listbox = new Select(driver.findElement(By.xpath("//select[@name='FromLB']"))); 
+listbox.sel ectByValue("Italy"); 
+It will select value by value = "Italy". 
+? Select By Index 
+Select listbox = new Select(driver.findElement(By.xpath("//select[@name='FromLB']"))); 
+listbox.selectByIndex(0);  
+It will select value by index= 0(First option).
+ 
+VIEW PRACTICAL EXAMPLES OF SELECTING VALUE FROM DROP DOWN LIST. 
+? Deselect by Visible Text 
+Select listbox = new Select(driver.findElement(By.xpath("//select[@name='FromLB']"))); 
+listbox. deselectByVisibleText("Russia");  
+It will deselect option by visible text = Russia from list box.  
+? Deselect by Value 
+Select listbox = new Select(driver.findElement(By.xpath("//select[@name='FromLB']"))); 
+listbox. deselectByValue("Mexico");  
+It will deselect option by value = Mexico from list box.  
+? Deselect by Index 
+Select listbox = new Select(driver.findElement(By.xpath("//select[@name='FromLB']"))); 
+listbox. deselectByIndex(5); 
+It will deselect option by Index = 5 from list box.  
+? Deselect All 
+Select listbox = new Select(driver.findElement(By.xpath("//select[@name='FromLB']"))); 
+listbox. deselectAll(); 
+It will remove all selections from list box of software application's page. 
+ 
+VIEW PRACTICAL EXAMPLES OF DESELECT SPECIFIC OPTION FROM LIST BOX 
+? isMultiple() 
+Select listbox = new Select(driver.findElement(By.xpath("//select[@name='FromLB']"))); 
+boolean value = listbox.isMultiple(); 
+It will return true if select box is multiselect else it will return false. VIEW PRACTICAL EXAMPLE
+OF isMultiple() 
+
+ 
+13. Navigate to URL or Back or Forward in Selenium Webdriver
+ 
+driver.navigate().to("http://only-testing-blog. blogspot.com/2014/01/textbox. html"); 
+driver.navigate(). back();  
+driver.navigate().forward();
+1st command will navigate to specific URL, 2nd will navigate one step back and 3rd command will navigate one 
+step forward. VIEW PRACTICAL EXAMPLES OF NAVIGATION COMMANDS.
+ 
+14. Verify Element Present in Selenium WebDriver
+ 
+Boolean iselementpresent = driver.findElements(By.xpath("//input[@id='text2']")).size()!= 0; 
+It will return true if element is present on page, else it will return false in variable iselementpresent. VIEW
+PRACTICAL EXAMPLE OF VERIFY ELEMENT PRESENT.
+
+15. Capturing entire page screenshot in Selenium WebDriver 
+
+File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType. FILE); 
+FileUtils.copyFile(screenshot, new File("D: \\screenshot.jpg")); 
+It will capture page screenshot and store it in your D: drive. VIEW PRACTICAL EXAMPLE ON THIS PAGE.
+
+16. Generating Mouse Hover Event In WebDriver 
+
+Actions actions = new Actions(driver); 
+WebElement moveonmenu = driver.findElement(By.xpath("//div[@id='menu1']/div")); 
+actions.moveToElement(moveonmenu); 
+actions.perform(); 
+Above example will move mouse on targeted element. VIEW PRACTICAL EXAMPLE OF MOUSE HOVER.
+ 
+17. Handling Multiple Windows In Selenium WebDriver.  
+1. Get All Window Handles. 
+Set<String> AllWindowHandles = driver.getWindowHandles();  
+2. Extract parent and child window handle from all window handles. 
+String window1 = (String) AllWindowHandles.toArray()[0];
+String window2 = (String) AllWindowHandles.toArray()[1];  
+3. Use window handle to switch from one window to other window.  
+driver.switchTo().window(window2);
+Above given steps with helps you to get window handle and then how to switch from one window to another
+window. VIEW PRACTICAL EXAMPLE OF HANDLING MULTIPLE WINDOWS IN WEBDRIVER
+
+18. Check Whether Element is Enabled Or Disabled In Selenium Web driver.  
+
+boolean fname = driver.findElement(By.xpath("//input[@name='fname']")).isEnabled();  
+System.out.print(fname);
+Above syntax will verify that element (text box) fname is enabled or not. You can use it for any input element.
+VIEW PRACTICAL EXAMPLE OF VERIFY ELEMENT IS ENABLED OR NOT.
+
+19. Enable/Disable Textbox During Selenium Webdriver Test Case Execution.  
+JavascriptExecutor javascript = (JavascriptExecutor) driver; 
+String todisable = "document.getElementsByName('fname')[0].setAttribute(' disabled', '');";
+javascript.executeScript(todisable); 
+String toenable = "document.getElementsByName('lname')[0].removeAttribute(' disabled');";  
+javascript.executeScript(toenable); 
+It will disable fname element using setAttribute() method and enable lname element usi ng removeAttribute()
+method. VIEW PRACTICAL EXAMPLE OF ENABLE/DISABLE TEXTBOX. 
+
+20. Selenium WebDriver Assertions With TestNG Framework 
+? assertEquals 
+Assert.assertEquals(actual, expected); 
+assertEquals assertion helps you to assert actual and expected equal values. VIEW PRACTICAL EXAMPLE OF 
+assertEquals ASSERTION 
+? assertNotEquals 
+Assert.assertNotEquals(actual, expected); 
+assertNotEquals assertion is useful to assert not equal values.  VIEW PRACTICAL EXAMPLE OF
+assertNotEquals ASSERTION. 
+? assertTrue 
+Assert.assertTrue(condition);
+assertTrue assertion works for boolean value true assertion. VIEW PRACTICAL EXAMPLE OF assertTrue
+ASSERTION. 
+? assertFalse 
+Assert.assertFalse(condition);
+assertFalse assertion works for boolean value false assertion. VIEW PRACTICAL EXAMPLE OF assertFalse 
+ASSERTION.
+ 
+21. Submit() method to submit form
+ 
+driver.findElement(By.xpath("//input[@name='Company']")).s ubmit(); 
+It will submit the form. VIEW PRACTICAL EXAMPLE OF SUBMIT FORM.
+ 
+22. Handling Alert, Confirmation and Prompts Popups 
+
+ 
+String myalert = driver.switchTo(). alert().getText(); 
+To store alert text. VIEW PRACTICAL EXAMPLE OF STORE ALERT TEXT
+
+ 
+driver.switchTo().alert().accept(); 
+To accept alert. VIEW PRACTICAL EXAMPLE OF ALERT ACCEPT 
+
+ 
+driver.switchTo().alert(). dismiss();
+To dismiss confirmation. VIEW PRACTICAL EXAMPLE OF CANCEL CONFIRMATION
+ 
+ 
+driver.switchTo().alert().sendKeys("This Is John"); 
+To type text In text box of prompt popup. VIEW PRACTICAL EXAMPLE OF TYPE TEXT IN PROMPT TEXT BOX
+==========================================================
+WebDriver Test Case:
+
+package login;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class UserLoginLogut {
+public void user(){
+		//Instantiate Browser driver
+		System.setProperty("webdriver.chrome.driver", "C:/Users/Nirnay/Downloads/chromedriver.exe");
+		// Create driver object
+		WebDriver driver=new ChromeDriver();
+		
+		//Launch the gcrit Website
+		driver.get("http://www.gcrit.com/build3/login.php");
+		
+		//Capture the URL and Verify the GCRIT Application Launched
+		String url=driver.getCurrentUrl();
+		//Verification code 
+		if (url.equals("http://www.gcrit.com/build3/login.php"))
+		{
+			System.out.println("Test Case1:Application Launched Succsseful - Passed");
+		}
+		else
+		{
+		System.out.println("Test Case1:Application not Launched Succsseful - Failed");
+		}
+		
+		System.out.println("Test Case2:Verify the Email Address");
+		//Verify the Email Address
+		WebElement Email=driver.findElement(By.name("email_address"));
+		//Check the Email Address displayed
+		Email.isDisplayed();
+		//Check the Email Address enabled
+		Email.isEnabled();
+		//Enter the value in Email Address
+		Email.sendKeys("kakishrinivasan@gmail.com");
+		//Return the entered value
+		Email.getText();
+		
+		System.out.println("Test Case3:Verify the Password edit box");
+		//Verify the Password edit box
+		WebElement Password=driver.findElement(By.name("password"));
+		//Check the Password edit field displayed
+		Password.isDisplayed();
+		//Check the Password edit field enabled
+		Password.isEnabled();
+		//Enter the value in Password edit field
+		Password.sendKeys("kaki200");
+		//Return the entered value
+		Password.getText();
+		
+		System.out.println("Test Case4:Verify the login button");
+		//Verify the login button and click on
+		WebElement login=driver.findElement(By.id("tdb5"));
+		//check the login button is displayed
+		login.isDisplayed();
+		//check the login button is enabled status
+		login.isEnabled();
+		//Return User name
+		login.getAttribute("type");
+		//Click on login 
+		login.click();
+		
+		url=driver.getCurrentUrl();
+		//Verification code 
+		if (url.equals("http://www.gcrit.com/build3/index.php"))
+		{
+			System.out.println("Test Case5:Login Succsseful - Passed");
+		}
+		else
+		{
+		System.out.println("Test Case5:Login unsccsseful - Failed");
+		}
+		
+		
+		//Verify the user name displayed in the login home page
+		String Uname=driver.findElement(By.className("greetUser")).getText();
+		//Print a Message to displayed user name in the application
+		System.out.println("Test Case6:Verify the Login user name "+Uname);
+		//System.out.println(Uname);
+		//Close Browser
+		driver.close();
+	
+}
+public static void main(String[]args){
+//Create object
+UserLoginLogut obj = new UserLoginLogut();
+obj.user();
+	
+	
+}
+}
+================================
+ 

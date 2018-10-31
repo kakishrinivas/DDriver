@@ -1,0 +1,14 @@
+Briefcase Overview
+The MetricStream Briefcase allows end users to migrate their online tasks to the offline mode, work on the task while disconnected from the network and the MetricStream Web Application, and then synchronize back to the application whenever they are online.
+Briefcase Functions
+Following are the functions of the MetricStream Briefcase:
+•	While using the Briefcase, end users can work on the same forms that they are familiar with online forms. Therefore, there is minimal or no training or learning required.
+•	The ability to work in the offline mode is important for end users such as auditors, inspectors, and other road-warriors who have to collect information and enter this information in forms when they are in the field or traveling and have no network connectivity. This lack of connectivity may be due to a lack of physical internet connection or if they are in a place from where they cannot connect to their enterprise due to network security issues.
+•	When connected to the network, users can access the MetricStream application and download their assigned tasks to the Briefcase. The users can also download any file attachments that are already embedded in that task to the Briefcase.
+•	The user can download assignments or forms in an editable mode to enable update. Then, the users can work on their assignments by connecting to the network or offline. Later, they can synchronize data and files to the online application when they are connected to the network.
+
+
+
+Chapter 7. 	Briefcase Audit Trail
+The auditing capability within Briefcase plays an important role in tracking each offline assignments throughout its lifecycle. The MetricStream Briefcase application has an inbuilt auditing capability that records every action that takes place to an assignment in the offline mode. 
+The audit trail helps not only for internal analysis but also for understanding the complete history of the offline assignment. The audit trail consists of information such as offline user name, from which the IP address the assignment was taken offline, the assignment name, the action type (assignment downloaded to Briefcase, assignment synchronized to online application), and the time stamp of these actions.

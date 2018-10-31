@@ -1,0 +1,420 @@
+GC Reddy Portal Detailes:
+
+User login url:http://www.gcrit.com/build3/login.php
+Admin login url:http://www.gcrit.com/build3/admin/
+
+Nirnay@gmail.com
+admin@123
+Annapurna@gmail.com
+admin@123
+Darshan@gmail.com
+kakishrinivasan@gmail.com
+kaki200
+
+==============================================
+public class Sample {
+@Test
+public void verifyTitle(){
+System.setProperty("webdriver.chrome.driver","E:/chromedriver.exe");
+WebDriver driver = new ChromeDriver();   
+driver.get("https://www.gmail.com");
+String pageTitle = driver.getTitle();
+Assert.assertEquals(pageTitle, "Gmail");
+}
+}
+========================================
+public class AdminLoginLogout {
+	public static WebDriver driver;
+	
+	@Test (priority=1)
+	public void launchBrowser(){
+	System.setProperty("webdriver.chrome.driver","E:/chromedriver.exe");
+	driver = new ChromeDriver(); 
+	}
+	
+	@Test (priority=7)
+	public void closeBrowser(){
+	driver.close();
+	}
+		
+	@Test (priority=2)
+	public void launchApp(){
+  		driver.get("http://www.gcrit.com/build3/admin/");
+  		System.out.println("Application Launched Successfuly(Title) :"+ driver.getTitle());
+		
+	}
+	@Test (priority=3)
+	public void enterUname(){
+  		WebElement uname = driver.findElement(By.name("username"));
+  		System.out.println("Username Field Dispalyed :" + uname.isDisplayed());
+  		System.out.println("Username Field Enabled :" + uname.isEnabled());
+  		uname.sendKeys("xyz");
+  		uname.getText();
+  		uname.clear();
+  		uname.sendKeys("admin");
+  		System.out.println("Return Entered Username Value :"+ uname.getText());
+  	}
+	@Test (priority=4)
+	public void enterPassword(){
+		WebElement paswd=driver.findElement(By.name("password"));
+  		System.out.println("Password Field Dispalyed :" + paswd.isDisplayed());
+  		System.out.println("Password Field Enabled :"+ paswd.isEnabled());
+		paswd.isDisplayed();
+		paswd.isEnabled();
+		paswd.sendKeys("admin123");
+		paswd.getText();
+		paswd.clear();
+		paswd.sendKeys("admin@123");
+		paswd.getText();
+		System.out.println("Return Entered Password Value :"+ paswd.getText());
+			
+		}
+	@Test (priority=5)
+	public void clicklogin(){
+  		WebElement button=driver.findElement(By.id("tdb1"));
+  		System.out.println("Login Button Dispalyed :" + button.isDisplayed());
+  		System.out.println("Login Button Enabled :" + button.isEnabled());
+  		button.getAttribute("value");
+  		button.click();
+		
+		}
+	@Test (priority=6)
+	public void verifyTitle(){
+		Assert.assertEquals("http://www.gcrit.com/build3/admin/index.php",driver.getCurrentUrl());
+		System.out.println("Current URL :"+driver.getCurrentUrl());
+	}
+}
+
+=======================================
+public class UserLoginLogut {
+@Test
+public void user(){
+		//Instantiate Browser driver
+		System.setProperty("webdriver.chrome.driver", "C:/Users/Nirnay/Downloads/chromedriver.exe");
+		// Create driver object
+		WebDriver driver=new ChromeDriver();
+		
+		//Launch the gcrit Website
+		driver.get("http://www.gcrit.com/build3/login.php");
+		
+		//Capture the URL and Verify the GCRIT Application Launched
+		String url=driver.getCurrentUrl();
+		System.out.println(url);
+		//Verification code 
+			
+		System.out.println("Test Case2:Verify the Email Address");
+		//Verify the Email Address
+		WebElement Email=driver.findElement(By.name("email_address"));
+		//Check the Email Address displayed
+		Email.isDisplayed();
+		//Check the Email Address enabled
+		Email.isEnabled();
+		//Enter the value in Email Address
+		Email.sendKeys("kakishrinivasan@gmail.com");
+		//Return the entered value
+		Email.getText();
+		
+		System.out.println("Test Case3:Verify the Password edit box");
+		//Verify the Password edit box
+		WebElement Password=driver.findElement(By.name("password"));
+		//Check the Password edit field displayed
+		Password.isDisplayed();
+		//Check the Password edit field enabled
+		Password.isEnabled();
+		//Enter the value in Password edit field
+		Password.sendKeys("kaki200");
+		//Return the entered value
+		Password.getText();
+		
+		System.out.println("Test Case4:Verify the login button");
+		//Verify the login button and click on
+		WebElement login=driver.findElement(By.id("tdb5"));
+		//check the login button is displayed
+		login.isDisplayed();
+		//check the login button is enabled status
+		login.isEnabled();
+		//Return User name
+		login.getAttribute("type");
+		//Click on login 
+		login.click();
+		
+		url=driver.getCurrentUrl();
+		//Verification code 
+		System.out.println(url);
+		//Verify the user name displayed in the login home page
+		String Uname=driver.findElement(By.className("greetUser")).getText();
+		//Print a Message to displayed user name in the application
+		System.out.println("Test Case6:Verify the Login user name "+Uname);
+		//System.out.println(Uname);
+		//Close Browser
+		driver.close();
+	
+}
+
+}
+
+==================================================
+public class Methods {
+	public static WebDriver driver;
+	public void launchBrowser(){
+		System.setProperty("webdriver.chrome.driver","E:/chromedriver.exe");
+		driver = new ChromeDriver(); 
+	}
+	public void closeBrowser(){
+	driver.close();
+	}
+	public void launchApp(){
+		driver.get("http://www.gcrit.com/build3/admin/");
+  		System.out.println("Application Launched Successfuly(Title) :"+ driver.getTitle());
+	}
+	public void userName(){
+		WebElement uname = driver.findElement(By.name("username"));
+  		System.out.println("Username Field Dispalyed :" + uname.isDisplayed());
+  		System.out.println("Username Field Enabled :" + uname.isEnabled());
+  		uname.sendKeys("xyz");
+  		uname.getText();
+  		uname.clear();
+  		uname.sendKeys("admin");
+  		System.out.println("Return Entered Username Value :"+ uname.getText());
+  	}	
+	
+	public void password(){
+		WebElement paswd=driver.findElement(By.name("password"));
+  		System.out.println("Password Field Dispalyed :" + paswd.isDisplayed());
+  		System.out.println("Password Field Enabled :"+ paswd.isEnabled());
+		paswd.isDisplayed();
+		paswd.isEnabled();
+		paswd.sendKeys("admin1230");
+		paswd.getText();
+		paswd.clear();
+		paswd.sendKeys("admin@123");
+		paswd.getText();
+		System.out.println("Return Entered Password Value :"+ paswd.getText());
+				}
+	public void clickLogin(){
+		WebElement button=driver.findElement(By.id("tdb1"));
+  		System.out.println("Login Button Dispalyed :" + button.isDisplayed());
+  		System.out.println("Login Button Enabled :" + button.isEnabled());
+  		button.getAttribute("value");
+  		button.click();
+	}
+	public void verifyTitle(){
+		//System.out.println("Current URL :"+driver.getCurrentUrl());
+	String title=driver.getTitle();
+	if(title.equals("http://www.gcrit.com/build3/admin/index.php")){
+		System.out.println("Login Successful :Passed");
+	}
+	else
+	{
+		System.out.println("Login Unsuccessfull :Failed");
+	}
+	
+	}
+	public static void main(String[] args){
+		Methods obj=new Methods();
+		obj.launchBrowser();
+		obj.launchApp();
+		obj.userName();
+		obj.password();
+		obj.clickLogin();
+		obj.verifyTitle();
+		obj.closeBrowser();
+	}
+
+}
+
+==========================================================
+public class TestCase1 extends Methods {
+	public static void main(String[] args){
+	
+	TestCase1 obj2=new TestCase1();
+	obj2.launchBrowser();
+	obj2.launchApp();
+	obj2.userName();
+	obj2.password();
+	obj2.clickLogin();
+	obj2.verifyTitle();
+	obj2.closeBrowser();
+	
+	}
+
+}
+================================================
+public class Briefcase {
+public static void main(String[] args) {
+System.setProperty("webdriver.ie.driver","E:/IEDriverServer.exe");
+WebDriver driver = new InternetExplorerDriver();
+JavascriptExecutor javascript = (JavascriptExecutor) driver;
+//javascript.executeScript("alert('Test Case Execution Is started Now..');"); 
+
+driver.get("http://localhost:8080/");
+//10.Get domain name using java script executor
+
+String JS=(String)javascript.executeScript("return document.domain");
+
+  System.out.println(JS);
+  String i = driver.getCurrentUrl(); 
+  System.out.println(i); 
+  driver.close();
+ }
+}
+==========================================
+Gmail Login:Verify the Gmail Login and Logout
+
+public class GmailLogin {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","E:/chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		System.out.println("Launcg Gmail Login Page");
+		driver.get("https://gmail.com/");
+		System.out.println("Enter Email");
+		driver.findElement(By.name("identifier")).sendKeys("kakishrinivasan@gmail.com");
+		System.out.println("Click on Next Button");
+		driver.findElement(By.id("identifierNext")).click();
+		Thread.sleep(5000);
+		System.out.println("Enter Password");
+		driver.findElement(By.xpath("//*[@id='password']/div[1]/div/div[1]/input")).sendKeys("nirnay17");
+		System.out.println("Click on Next Button");
+		driver.findElement(By.id("passwordNext")).click();
+		Thread.sleep(5000);
+		System.out.println("Click on User Profile icon");
+		driver.findElement(By.xpath("//*[@id='gb']/div[2]/div[3]/div/div[2]/div/a")).click();
+		System.out.println("Return the user name and display");
+		String UserName=driver.findElement(By.xpath("//*[@id='gb']/div[2]/div[6]/div[1]/div/div[1]")).getText();
+		System.out.println("User Login Successful:"+ UserName);
+		System.out.println("Click on Sent");
+		driver.findElement(By.linkText("Sent")).click();
+		Thread.sleep(5000);
+		System.out.println("Click on Inbox");
+		driver.findElement(By.linkText("Inbox")).click();
+		System.out.println("Click on user profile icon");
+		driver.findElement(By.xpath("//*[@id='gb']/div[2]/div[3]/div/div[2]/div/a")).click();
+		System.out.println("Click on Sign out");
+		driver.findElement(By.linkText("Sign out")).click();
+		Thread.sleep(5000);
+		System.out.println("Close Browser");
+		driver.close();
+		
+	}
+
+}
+
+=============================================================================
+How do I write data in Excel?
+Create a Workbook.
+Create a Sheet.
+Repeat the following steps until all data is processed: Create a Row. Create Cells in a Row. Apply formatting using CellStyle.
+Write to an OutputStream.
+Close the output stream.
+===============================================
+My Account Information
+Error Your E-Mail Address already exists in our records - please log in with the e-mail address or create an account with a different address.
+
+
+public class DataDrivenTesting {
+	public WebDriver driver;
+	
+	@Test(dataProvider ="testdata")
+	public void login(String firstname, String lastname,String eaddress,String saddress,String postcode,String city,String state ,String telephone,String password,String confirmation) throws InterruptedException{
+	
+	System.setProperty("webdriver.chrome.driver","E:/chromedriver.exe");
+	WebDriver driver = new ChromeDriver();
+	
+	driver.get("http://gcrit.com/build3/");
+	driver.findElement(By.linkText("create an account")).click();
+	driver.findElement(By.xpath(".//*[@id='bodyContent']/form/div/div[2]/table/tbody/tr[1]/td[2]/input[1]")).click();
+	driver.findElement(By.name("firstname")).sendKeys(firstname);
+	driver.findElement(By.name("lastname")).sendKeys(lastname);
+	driver.findElement(By.name("dob")).sendKeys("10/20/1990");
+	driver.findElement(By.name("email_address")).sendKeys(eaddress);
+	driver.findElement(By.name("street_address")).sendKeys(saddress);
+	driver.findElement(By.name("postcode")).sendKeys(postcode);
+	driver.findElement(By.name("city")).sendKeys(city);
+	driver.findElement(By.name("state")).sendKeys(state);
+	Select Dropdown = new Select (driver.findElement(By.name("country")));
+	Dropdown.selectByVisibleText("India");
+	driver.findElement(By.name("telephone")).sendKeys(telephone);
+	driver.findElement(By.name("password")).sendKeys(password);
+	driver.findElement(By.name("confirmation")).sendKeys(confirmation);
+	driver.findElement(By.id("tdb4")).click();
+	Thread.sleep(1000);
+	Assert.assertEquals("Your Account Has Been Created!",driver.findElement(By.xpath(".//*[@id='bodyContent']/h1")).getText());
+	driver.close();
+	}
+	   
+	@DataProvider(name ="testdata")
+	public Object [] [] readExcel() throws BiffException, IOException {
+	File f = new File("C:/Users/Nirnay/Desktop/Test/TestData.xls");
+	Workbook w = Workbook.getWorkbook(f);
+	Sheet s = w.getSheet("Sheet3");
+	int rows = s.getRows();
+	int columns = s.getColumns();
+	//System.out.println(rows);
+	//System.out.println(columns);
+
+	String inputData [] [] = new String [rows-1] [columns];
+	
+	for (int i=1; i<rows; i++){
+	    for (int j=0; j<columns; j++){
+	    Cell c = s.getCell(j, i);
+	    inputData [i-1][j] = c.getContents();
+	    //System.out.println(inputData[i][j]);
+	}
+	}
+	
+	return inputData;
+	}
+	}
+=========================================================
+public class DataDrivenTest {
+	public WebDriver driver;
+	@Test(dataProvider ="testdata")
+	public void login(String email, String password){
+	System.setProperty("webdriver.chrome.driver","E:/chromedriver.exe");
+	WebDriver driver = new ChromeDriver();	
+	driver.get("http://www.gcrit.com/build3/login.php");
+	driver.findElement(By.name("email_address")).sendKeys(email);
+	driver.findElement(By.name("password")).sendKeys(password);
+	driver.findElement(By.id("tdb5")).click();
+	Assert.assertEquals("http://www.gcrit.com/build3/index.php",driver.getCurrentUrl());
+	driver.close();
+	}
+	   
+	@DataProvider(name ="testdata")
+	public Object [] [] readExcel() throws BiffException, IOException {
+	File f = new File("C:/Users/Nirnay/Desktop/Test/TestData.xls");
+	Workbook w = Workbook.getWorkbook(f);
+	Sheet s = w.getSheet("Sheet1");
+	int rows = s.getRows();
+	int columns = s.getColumns();
+	//System.out.println(rows);
+	//System.out.println(columns);
+
+	String inputData [] [] = new String [rows-1] [columns];
+	for (int i=1; i<rows; i++){
+	    for (int j=0; j<columns; j++){
+	    Cell c = s.getCell(j, i);
+	    inputData [i-1][j] = c.getContents();
+	    System.out.println(inputData[i-1][j]);
+	}
+	}
+	return inputData;
+	}
+	}
+	==============================================================
+		public void launchBrowser() throws IOException{
+		String browserdriver=getObject("browserdriver");
+		String driverpath=getObject("driverpath");
+		System.setProperty(browserdriver,driverpath);
+		String browser=getObject("browser");
+		if(browser.contains("InternetExplorer")){
+
+			driver = new InternetExplorerDriver();	
+		}
+		if(browser.contains("Chrome")){
+
+			driver = new ChromeDriver();	
+		}
+
+	}
